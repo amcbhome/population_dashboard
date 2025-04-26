@@ -19,13 +19,19 @@ Refer to online tutorial
 
 # 3.1 Import libraries
 """
-# !pip install -r https://raw.githubusercontent.com/amcbhome/population_dashboard/main/requirements.txt
 import streamlit as st
 import pandas as pd
 import altair as alt
 import plotly.express as px
-import subprocess
 
+st.set_page_config(
+    page_title="US Population Dashboard",
+    page_icon="🏂",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+import subprocess
 # Run the pip install command
 subprocess.run(["pip", "install", "-r", "requirements.txt"], check=True)
 
