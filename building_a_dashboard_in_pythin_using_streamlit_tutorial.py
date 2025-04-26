@@ -24,6 +24,10 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import plotly.express as px
+import subprocess
+
+# Run the pip install command
+subprocess.run(["pip", "install", "-r", "requirements.txt"], check=True)
 
 """# 3.2 Page configuration"""
 
