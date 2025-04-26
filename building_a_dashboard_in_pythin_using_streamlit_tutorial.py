@@ -19,7 +19,7 @@ Refer to online tutorial
 
 # 3.1 Import libraries
 """
-pip install plotly
+
 import streamlit as st
 import pandas as pd
 import altair as alt
