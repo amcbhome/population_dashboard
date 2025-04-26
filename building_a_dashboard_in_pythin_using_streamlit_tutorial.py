@@ -75,14 +75,17 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
     return heatmap
 
 # Choropleth
-
-    def make_choropleth(input_df, input_id, input_column, input_color_theme):
-    choropleth = px.choropleth(input_df, locations=input_id, color=input_column, locationmode="USA-states",
-                               color_continuous_scale=input_color_theme,
-                               range_color=(0, max(df_selected_year.population)),
-                               scope="usa",
-                               labels={'population':'Population'}
-                              )
+def make_choropleth(input_df, input_id, input_column, input_color_theme):
+    choropleth = px.choropleth(
+        input_df, 
+        locations=input_id, 
+        color=input_column, 
+        locationmode="USA-states",
+        color_continuous_scale=input_color_theme,
+        range_color=(0, max(input_df.population)),
+        scope="usa",
+        labels={'population': 'Population'}
+    )
     choropleth.update_layout(
         template='plotly_dark',
         plot_bgcolor='rgba(0, 0, 0, 0)',
