@@ -97,13 +97,13 @@ def make_choropleth(input_df, input_id, input_column, input_color_theme):
 
     # Donut
 
-    def calculate_population_difference(input_df, input_year):
+def calculate_population_difference(input_df, input_year):
   selected_year_data = input_df[input_df['year'] == input_year].reset_index()
   previous_year_data = input_df[input_df['year'] == input_year - 1].reset_index()
   selected_year_data['population_difference'] = selected_year_data.population.sub(previous_year_data.population, fill_value=0)
   return pd.concat([selected_year_data.states, selected_year_data.id, selected_year_data.population, selected_year_data.population_difference], axis=1).sort_values(by="population_difference", ascending=False)
 
-  def make_donut(input_response, input_text, input_color):
+def make_donut(input_response, input_text, input_color):
   if input_color == 'blue':
       chart_color = ['#29b5e8', '#155F7A']
   if input_color == 'green':
@@ -147,7 +147,7 @@ def make_choropleth(input_df, input_id, input_column, input_color_theme):
 
 # Convert population to text
 
-  def format_number(num):
+def format_number(num):
     if num > 1000000:
         if not num % 1000000:
             return f'{num // 1000000} M'
@@ -214,7 +214,7 @@ with col[0]:
 
 
 # Column 2 Maps
-        with col[1]:
+with col[1]:
     st.markdown('#### Total Population')
 
     choropleth = make_choropleth(df_selected_year, 'states_code', 'population', selected_color_theme)
@@ -225,7 +225,7 @@ with col[0]:
 
     # Column 3 Results/About
 
-    with col[2]:
+with col[2]:
     st.markdown('#### Top States')
 
     st.dataframe(df_selected_year_sorted,
@@ -244,7 +244,7 @@ with col[0]:
                      )}
                  )
 
-    with st.expander('About', expanded=True):
+with st.expander('About', expanded=True):
         st.write('''
             - Data: [U.S. Census Bureau](<https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html>).
             - :orange[**Gains/Losses**]: states with high inbound/ outbound migration for selected year
